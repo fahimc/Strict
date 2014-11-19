@@ -1,7 +1,6 @@
 Strict
 ======
-
-JavaScript library which check variable types and flags incorrect values.
+A JavaScript library that checks variable types and will flag incorrect values when you try to set them.
 
 
 ##Types that are supported  
