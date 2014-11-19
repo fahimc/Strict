@@ -4,7 +4,7 @@ Strict
 JavaScript library which check variable types and flags incorrect values.
 
 
-#Types that are supported  
+##Types that are supported  
 
 ```
 Strict.TYPE={
@@ -17,7 +17,7 @@ Strict.TYPE={
 }
 ```
 
-#Usage  
+##Usage  
 
 When you create a variable set the value to a Strict type:  
 
