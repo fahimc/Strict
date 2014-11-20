@@ -12,16 +12,21 @@
 
 		function setCustomerDetails(name,age,hasJob,DOB)
 		{
+
 			customerName.value = name;
 			customerAge.value = age;
 			customerHasJob.value = hasJob;
 			customerDOB.value = DOB;
 		}
-
+		function checkType(name,age){
+			Strict.checkType(name,Strict.TYPE.STRING);
+			Strict.checkType(age,Strict.TYPE.NUMBER);
+			console.log(name,age)
+		}
 		setCustomerDetails('Tom',43,true,new Date(1985,1,4));
 		//below will log an error.
 		setCustomerDetails('Tom',"43",true,'');
-
+		console.log(checkType(43,34));
 	</script>
 </head>
 <body>

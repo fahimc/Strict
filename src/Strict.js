@@ -68,6 +68,10 @@
 		if(!Strict.CUSTOM_TYPES[type])return type;
 		return Strict.CUSTOM_TYPES[type].type;
 	};
+	Strict.checkType=function(value,type){
+		
+		return Strict.validateType(value,type);
+	}
 	Strict.isValid=function(value,type){
 		if(Strict.CUSTOM_TYPES[type] && Strict.CUSTOM_TYPES[type].validate)
 		{
@@ -81,6 +85,14 @@
 		var stack = new Error('').stack;
 		console.log('%c Strict Error ', 'background: #f00; color: #ffffff',message,"\n"+stack);
 	}
+	Strict.validateType=function(val,type){
+		if(!Strict.isValid(val,Strict.getType(type)))
+		{
+			Strict.log('Wrong type has been set. Expected '+String(type).toUpperCase()+' got '+String(typeof(val)).toUpperCase());
+			return false; 
+		}
+		return true;
+	}
 	//STRICT VALUE CLASS
 	function StrictValue(val,type){
 		this.type = type;
@@ -92,12 +104,8 @@
 			return this._value;
 		},
 		set value(val){
-			if(!Strict.isValid(val,Strict.getType(this.type)))
-			{
-				Strict.log('Wrong type has been set. Expected '+String(this.type).toUpperCase()+' got '+String(typeof(val)).toUpperCase());
-				return; 
-			}
-			this._value = val;
+			var valid = Strict.validateType(val,this.type);
+			if(valid)this._value = val;
 		}
 	};
 	//CONST VALUE CLASS
@@ -113,7 +121,7 @@
 		set value(val){
 			if(this._value==undefined)
 			{
-			this._value = val;
+				this._value = val;
 				
 			}else{
 				Strict.log('You cannot update a constant value');

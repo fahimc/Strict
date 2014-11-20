@@ -95,4 +95,14 @@ describe("Strict", function() {
    str.value='again';
    expect(str.value).toEqual('HELLO WOLRD');
  });
+  it("checkType is valid for string", function() {
+   var name = "fahim";
+   var valid =  Strict.checkType(name,Strict.TYPE.STRING);
+   expect(valid).toEqual(true);
+ });
+  it("checkType should fail when trying to set a string to number", function() {
+   var name = 43;
+   var valid =  Strict.checkType(name,Strict.TYPE.STRING);
+   expect(valid).toEqual(false);
+ });
 });
