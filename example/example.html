@@ -7,16 +7,18 @@
 		var customerName = Strict(Strict.TYPE.STRING);
 		var customerAge = Strict(Strict.TYPE.NUMBER);
 		var customerHasJob = Strict(Strict.TYPE.BOOLEAN);
+		var customerDOB = Strict(Strict.TYPE.DATE);
 
-		function setCustomerDetails(name,age,hasJob)
+		function setCustomerDetails(name,age,hasJob,DOB)
 		{
 			customerName.value = name;
 			customerAge.value = age;
 			customerHasJob.value = hasJob;
+			customerDOB.value = DOB;
 		}
 
-		setCustomerDetails('Tom',43,true);
-		setCustomerDetails('Tom',"43",true);
+		setCustomerDetails('Tom',43,true,new Date(1985,1,4));
+		setCustomerDetails('Tom',"43",true,'');
 
 	</script>
 </head>
