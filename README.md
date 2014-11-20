@@ -3,17 +3,18 @@ Strict
 A JavaScript library that checks variable types and will flag incorrect values when you try to set them.
 
 
-##Types that are supported  
+##Types that are currently supported  
 
 ```
 Strict.TYPE={
-				STRING:'string',
-				NUMBER:'number',
-				BOOLEAN:'boolean',
-				OBJECT:'object',
-				FUNCTION:'function',
-				SYMBOL:'symbol'
-}
+		STRING:'string',
+		NUMBER:'number',
+		BOOLEAN:'boolean',
+		OBJECT:'object',
+		FUNCTION:'function',
+		SYMBOL:'symbol',
+		DATE:'date'
+	}
 ```
 
 ##Usage  
