@@ -1,5 +1,32 @@
 (function(){
+	// Strict Class
 	function Strict(type){
+		var value=Strict.getDefaultValue(type);
+		if(value==undefined)return;
+		return new StrictValue(value,type);
+	}
+	Strict.TYPE={
+		STRING:'string',
+		NUMBER:'number',
+		BOOLEAN:'boolean',
+		OBJECT:'object',
+		FUNCTION:'function',
+		SYMBOL:'symbol',
+		DATE:'date'
+	}
+	Strict.CUSTOM_TYPES=
+	{
+		date:{
+			type:'object',
+			validate:function(val){
+				return val instanceof Date?true:false;
+			}
+		}
+	};
+	Strict.CONST=function(value,type){
+		return new ConstValue(value,type);
+	};
+	Strict.getDefaultValue=function(type){
 		var value;
 		switch(type)
 		{
@@ -30,30 +57,11 @@
 				value = Strict.CUSTOM_TYPES[type].value;
 			}else{
 				Strict.log('Type not found');
-				return null;
+				return ;
 			}
 			break;
 		}
-		return new StrictValue(value,type);
-	}
-	Strict.TYPE={
-		STRING:'string',
-		NUMBER:'number',
-		BOOLEAN:'boolean',
-		OBJECT:'object',
-		FUNCTION:'function',
-		SYMBOL:'symbol',
-		DATE:'date'
-	}
-	Strict.CUSTOM_TYPES=
-	{
-		date:{
-			type:'object',
-			validate:function(val){
-				console.log(val instanceof Date);
-				return val instanceof Date?true:false;
-			}
-		}
+		return value;
 	};
 	Strict.getType=function(type)
 	{
@@ -90,6 +98,26 @@
 				return; 
 			}
 			this._value = val;
+		}
+	};
+	//CONST VALUE CLASS
+	function ConstValue(val,type){
+		this.type = type;
+		this.value = val;
+	};
+
+	ConstValue.prototype = {
+		get value(){
+			return this._value;
+		},
+		set value(val){
+			if(this._value==undefined)
+			{
+			this._value = val;
+				
+			}else{
+				Strict.log('You cannot update a constant value');
+			}
 		}
 	};
 	window.Strict=Strict;
