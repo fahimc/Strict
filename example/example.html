@@ -8,6 +8,7 @@
 		var customerAge = Strict(Strict.TYPE.NUMBER);
 		var customerHasJob = Strict(Strict.TYPE.BOOLEAN);
 		var customerDOB = Strict(Strict.TYPE.DATE);
+		var constVal = Strict.CONST('HELLO WORLD',Strict.TYPE.STRING);
 
 		function setCustomerDetails(name,age,hasJob,DOB)
 		{
@@ -18,6 +19,7 @@
 		}
 
 		setCustomerDetails('Tom',43,true,new Date(1985,1,4));
+		//below will log an error.
 		setCustomerDetails('Tom',"43",true,'');
 
 	</script>

@@ -41,11 +41,15 @@ describe("Strict", function() {
     var valid = typeof str.value ==='symbol';
     expect(valid).toEqual(true);
   });
-   it("create a date", function() {
+  it("create a date", function() {
     var str = new Strict(Strict.TYPE.DATE);
     str.value=new Date();
     var valid = str.value instanceof Date;
     expect(valid).toEqual(true);
+  });
+  it("create a const", function() {
+    var str = new Strict.CONST('HELLO WOLRD',Strict.TYPE.STRING);
+    expect(str.value).toEqual('HELLO WOLRD');
   });
   
   it("set a string to number should fail", function() {
@@ -86,5 +90,9 @@ describe("Strict", function() {
     var valid = str.value instanceof Date;
     expect(valid).toEqual(true);
   });
-
+  it("set a const again should fail", function() {
+   var str = new Strict.CONST('HELLO WOLRD',Strict.TYPE.STRING);
+   str.value='again';
+   expect(str.value).toEqual('HELLO WOLRD');
+ });
 });

@@ -27,7 +27,10 @@ var customerAge = Strict(Strict.TYPE.NUMBER);
 var customerHasJob = Strict(Strict.TYPE.BOOLEAN);
 ```
 
+
 This will turn your variable into a Strict object.
+
+Strict takes one parameter which is the type that you want to set the variable or object.  
 
 To set the value use the 'value' property:  
 
@@ -48,4 +51,15 @@ If you set the variable to an incorrect value you will get and error and Strict 
 ```
 customerAge.value = '43';
 ```
+
+##Creating a Constant  
+You can create a constant variable which will not allow the variable to be modified once it has been created.  
+
+Strict.CONST takes two parameters, the first is the constant value and the second (optional) is the type.
+```
+var constVal = Strict.CONST('HELLO WORLD',Strict.TYPE.STRING);
+//This should log an error
+constVal = '';
+```
+
 
